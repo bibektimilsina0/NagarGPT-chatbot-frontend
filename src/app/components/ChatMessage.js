@@ -7,7 +7,9 @@ const ChatMessage = ({ chat }) => {
   const handlePlayAudio = async (text) => {
     setStatus("loading"); // Set loading state
     try {
-      const response = await fetch("https://ae70-34-16-244-191.ngrok-free.app/generate_audio", {
+       const API_URL = `${process.env.NEXT_PUBLIC_NAGARGPT_API_URL}/generate_audio`
+      // const API_URL = "/api/tts";
+      const response = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

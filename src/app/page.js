@@ -27,14 +27,15 @@ export default function Home() {
       const userMessage = history[history.length - 1].text;
 
       // Make the API call to the backend
-      const response = await fetch('https://ae70-34-16-244-191.ngrok-free.app/generate_text', {
+      console.log(process.env.NEXT_PUBLIC_NAGARGPT_API_URL)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_NAGARGPT_API_URL}/generate_text`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage }),
       });
-
+      console.log(response)
       const data = await response.json();
-
+      console.log(data)
       if (!response.ok) {
         throw new Error(data.error || "Something went wrong!");
       }

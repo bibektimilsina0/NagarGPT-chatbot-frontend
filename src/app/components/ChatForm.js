@@ -87,9 +87,10 @@ const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
         const formData = new FormData();
         formData.append('audio', audioFile);
 
-        // Send the audio to the backend
+        // Send the audio to the backend 
         try {
-          const API_URL ='https://ae70-34-16-244-191.ngrok-free.app/api/audio';
+          const API_URL =`${process.env.NEXT_PUBLIC_NAGARGPT_API_URL}/audio`;
+          // const API_URL='/api/stt'
           const response = await fetch(API_URL, {
             method: 'POST',
             body: formData,
